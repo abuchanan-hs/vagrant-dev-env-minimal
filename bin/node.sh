@@ -15,7 +15,7 @@ echo 'if [ -d "/usr/lib/node_modules" ]; then NODE_PATH="/usr/lib/node_modules";
 #curl https://install.meteor.com | /bin/sh
 
 # install rethinkdb javascript driver
-npm install rethinkdb
+#npm install rethinkdb
 
 # install mocha test framework
 npm install -g mocha
