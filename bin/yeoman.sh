@@ -17,10 +17,10 @@ apt-packages-install \
 
 
 # Compass - see: http://compass-style.org/install/
-if [ type compass >/dev/null 2>&1 ]
-then
-  sudo gem install compass
-fi
+#if [ type compass >/dev/null 2>&1 ]
+#then
+#  sudo gem install compass
+#fi
 
 # PhantomJS - see: http://phantomjs.org/download.html & http://phantomjs.org/build.html
 # 64-bit - http://phantomjs.googlecode.com/files/phantomjs-1.7.0-linux-x86_64.tar.bz2

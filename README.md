@@ -1,32 +1,30 @@
-Vagrant Development Environment
+Minimalist Vagrant Development Environment
 ===============================
 
-Vagrant development environment provisioned with shell scripts on a (linux/ubuntu) precise64 box
+Minamilist Vagrant development environment provisioned with shell scripts on a (linux/ubuntu) precise64 box
 
 ## Setup
 
-1. Install VirtualBox (version 4.1.22 or 4.1.23 not 4.2)
-2. Install Vagrant (vagrantup.com)
-3. Clone repo `git clone git://github.com/pixelhandler/vagrant-dev-env.git`
-4. Build box `cd vagrant-dev-env`
-5. Add submodule `git submodule init`
-6. Update *vagrant-shell-scripts* submodule `git submodule update`
-7. Fire up your box `vagrant up`
-8. Add to your hosts file: `echo '192.168.50.4 precise64' >> /etc/hosts`
+1. Install VirtualBox
+1. Install Vagrant (vagrantup.com)
+1. Install Virtual Box Guest Additions plugin `vagrant plugin install vagrant-vbguest`
+1. Clone repo `git clone git://github.com/abuchanan-hs/vagrant-dev-env-minimal.git`
+1. Build box `cd vagrant-dev-env`
+1. Add submodule `git submodule init`
+1. Update *vagrant-shell-scripts* submodule `git submodule update`
+1. Fire up your box `vagrant up`
 
-(If bin/lamp.sh is incuded in provision script)
-Visit <http://precise64> or <http://precise64/phpinfo.php> to working apache vhost
+For now ignore the error 'bash: line 3: xit: command not found'.  There is no indication anything has actually failed and its unclear where this error is being generated.
 
 ## Provision.sh and /bin
 
-
-The precise64 box uses a shell script to provision the vagrant box. Also in the /bin/ directory are the shell scripts for installing apache, mysql, php, mongo, node.js, ruby, yeoman.io and my vim-config with a bunch of tools for an IDE.
+The precise64 box uses a shell script to provision the vagrant box. Also in the /bin/ directory are the shell scripts for installing a number of additional services.
 
 **INFO:**  
-* Using v2 configuration for Vagrantfile
+* Using v2 configuration for Vagrantfile  
 * [Vagrant Shell Scripts](https://github.com/StanAngeloff/vagrant-shell-scripts "scripts") by StanAngeloff  
 * [Boxes](http://www.vagrantbox.es "boxes")  
-* [Vim-config](https://github.com/pixelhandler/vim-config "Vim config") using pathogen
+* [More Provisioner Script examples](https://github.com/rcelha/vagrant-sh-provisioner-scripts "provisioner scripts") by rcelha
 
 ## Build Something
 

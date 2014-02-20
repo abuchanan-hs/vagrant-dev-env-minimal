@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
+#MY_DIR=$( cd "$( dirname "$0" )" >/dev/null && pwd )
+
+set -e # Exit script immediately on first error.
+#set -x # Print commands and their arguments as they are executed.
+
+VAGRANT_DIR=/vagrant
+
 # {{{ Ubuntu utilities
 
-<%= import 'vagrant-shell-scripts/ubuntu.sh' %>
+source "${VAGRANT_DIR}/vagrant-shell-scripts/ubuntu.sh"
 
 # }}}
 
@@ -21,7 +28,6 @@ apt-packages-update
 # Install VM packages.
 apt-packages-install     \
   git-core               \
-  default-jdk            \
   imagemagick            \
   curl                   \
   ack-grep               \
@@ -32,7 +38,6 @@ apt-packages-install     \
   automake               \
   autoconf               \
   libtool                \
-  subversion             \
   pkg-config             \
   bison                  \
   libreadline6           \
@@ -52,14 +57,35 @@ apt-packages-install     \
   g++                    \
   make                   \
 
+if [ $? -ne 0 ]; then exit $?; fi
+
 dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
 
-<%= import 'bin/ruby.sh' %>
-<%= import 'bin/rethinkdb.sh' %>
-<%= import 'bin/node.sh' %>
-<%= import 'bin/vim-config.sh' %>
-<%= import 'bin/z-config.sh' %>
-<%= import 'bin/jsctags.sh' %>
-<%= import 'bin/dotfiles.sh' %>
+echo "*** Installing Node & modules"
+source "${VAGRANT_DIR}/bin/node.sh"
+if [ $? -ne 0 ]; then exit $?; fi
 
-echo 'if [ -d "/vagrant/bin" ]; then PATH=$PATH":/vagrant/bin"; fi' >> ~/.profile
+echo "*** Installing mongodb"
+source "${VAGRANT_DIR}/bin/mongo.sh"
+if [ $? -ne 0 ]; then exit $?; fi
+
+echo "*** Installing redisdb"
+source "${VAGRANT_DIR}/bin/redis.sh"
+if [ $? -ne 0 ]; then exit $?; fi
+
+echo "*** Installing yeoman"
+source "${VAGRANT_DIR}/bin/yeoman.sh"
+if [ $? -ne 0 ]; then exit $?; fi
+
+echo "*** Installing jsctags"
+source "${VAGRANT_DIR}/bin/jsctags.sh"
+if [ $? -ne 0 ]; then exit $?; fi
+
+echo "*** Installing dotfiles"
+source "${VAGRANT_DIR}/bin/dotfiles.sh"
+if [ $? -ne 0 ]; then exit $?; fi
+
+echo "*** DONE provisioning script"
+
+
+
