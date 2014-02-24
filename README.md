@@ -9,7 +9,7 @@ Minamilist Vagrant development environment provisioned with shell scripts on a (
 1. Install Vagrant (vagrantup.com)
 1. Install Virtual Box Guest Additions plugin `vagrant plugin install vagrant-vbguest`
 1. Clone repo `git clone git://github.com/abuchanan-hs/vagrant-dev-env-minimal.git`
-1. Build box `cd vagrant-dev-env`
+1. Build box `cd vagrant-dev-env-minimal`
 1. Add submodule `git submodule init`
 1. Update *vagrant-shell-scripts* submodule `git submodule update`
 1. Fire up your box `vagrant up`
@@ -28,5 +28,5 @@ The precise64 box uses a shell script to provision the vagrant box. Also in the 
 
 ## Build Something
 
-1. If not already in the repo's root directory `cd vagrant-dev-env` (or the path you created)
+1. If not already in the repo's root directory `cd vagrant-dev-env-minimal` (or the path you created)
 2. Login to your presice64 box via ssh `vagrant ssh` (the examples below are run from the vagrant box after connecting via ssh)

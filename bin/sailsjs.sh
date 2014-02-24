@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-npm -g install sails
+npm --global install sails
+
+# for password encryption
+npm --global install bcrypt
